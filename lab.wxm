@@ -1,0 +1,18 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 22.04.0 ] */
+/* [wxMaxima: input   start ] */
+nested_list : makelist([i, 5*i+random(50) ] ,i , 0, 10) $
+load("stats")$
+load("interpol")$
+fit1 : simple_linear_regression(nested_list)$
+curve1 : points(nested_list)$
+curve2 : explicit(take_inference(model, fit1), x, 0, 10)$
+curve3 : explicit(lagrange(nested_list), x, 0, 10)$
+load(draw)$
+wxdraw2d(curve1, curve2, curve3)$
+/* [wxMaxima: input   end   ] */
+
+
+
+/* Old versions of Maxima abort on loading files that end in a comment. */
+"Created with wxMaxima 22.04.0"$

@@ -1,0 +1,82 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 22.04.0 ] */
+/* [wxMaxima: input   start ] */
+M: entermatrix(4,2)$
+
+/* [wxMaxima: input   end   ] */
+/* [wxMaxima: question  start ] */
+Question #2
+/* [wxMaxima: question  end   ] */
+/* [wxMaxima: answer  start ] */
+2;
+/* [wxMaxima: answer  end   ] */
+/* [wxMaxima: question  start ] */
+Question #7
+/* [wxMaxima: question  end   ] */
+/* [wxMaxima: answer  start ] */
+7;
+/* [wxMaxima: answer  end   ] */
+/* [wxMaxima: question  start ] */
+Question #3
+/* [wxMaxima: question  end   ] */
+/* [wxMaxima: answer  start ] */
+3;
+/* [wxMaxima: answer  end   ] */
+/* [wxMaxima: question  start ] */
+Question #5
+/* [wxMaxima: question  end   ] */
+/* [wxMaxima: answer  start ] */
+5;
+/* [wxMaxima: answer  end   ] */
+/* [wxMaxima: question  start ] */
+Question #8
+/* [wxMaxima: question  end   ] */
+/* [wxMaxima: answer  start ] */
+9;
+/* [wxMaxima: answer  end   ] */
+/* [wxMaxima: question  start ] */
+Question #1
+/* [wxMaxima: question  end   ] */
+/* [wxMaxima: answer  start ] */
+1;
+/* [wxMaxima: answer  end   ] */
+/* [wxMaxima: question  start ] */
+Question #6
+/* [wxMaxima: question  end   ] */
+/* [wxMaxima: answer  start ] */
+6;
+/* [wxMaxima: answer  end   ] */
+/* [wxMaxima: question  start ] */
+Question #4
+/* [wxMaxima: question  end   ] */
+/* [wxMaxima: answer  start ] */
+4;
+/* [wxMaxima: answer  end   ] */
+
+
+/* [wxMaxima: input   start ] */
+load(lsquares)$
+coefs: lsquares_estimates(M, [x, y], y=a*x^2+b*x+c, [a,b,c]);
+list: lsquares_residuals(M, [x, y], y=a*x^2+b*x+c, coefs[1]);
+
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+err_list: makelist([M[i][1], M[i][2], list[i]], i, 1, 4);
+
+err1: errors(err_list);
+coefs[1];
+y: a*x^2 + b*x + c, %;
+
+xy_list: explicit(y, x, 1,9);
+wxdraw2d(
+    err1,
+    xy_list);
+kill(alll);
+/* [wxMaxima: input   end   ] */
+
+
+
+/* Old versions of Maxima abort on loading files that end in a comment. */
+"Created with wxMaxima 22.04.0"$

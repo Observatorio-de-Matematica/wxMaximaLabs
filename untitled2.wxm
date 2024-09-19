@@ -1,0 +1,29 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 22.04.0 ] */
+/* [wxMaxima: input   start ] */
+load(draw)$
+wxdraw2d(
+    points([1,2,3,4], [8,4,5,7]),
+    explicit(x^2, x, 1, 4)
+)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+load(draw)$
+M2: matrix(
+    [1, 1],
+    [2, 3.5],
+    [3, 10.4],
+    [4, 20]
+)$
+lsquares_estimates(M2, [x, y], y = a*x^b, [a, b]);
+F : a*V^b, %;
+wxdraw2d(F, );
+
+/* [wxMaxima: input   end   ] */
+
+
+
+/* Old versions of Maxima abort on loading files that end in a comment. */
+"Created with wxMaxima 22.04.0"$

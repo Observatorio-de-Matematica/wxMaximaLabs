@@ -1,0 +1,23 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 22.04.0 ] */
+/* [wxMaxima: input   start ] */
+load(interpol);
+M1: matrix (
+    [ 1, 2],
+    [ 3, 1],
+    [ 4, 2.5],
+    [ 8, 4],
+    [ 14,  -5]
+)$
+linearinterpol(M1, varname=T);
+R(T) := ''%;
+C1: points(M1)$
+C2: explicit(R(T), T, 1, 14)$
+load(draw)$
+wxdraw2d(C1, C2);
+/* [wxMaxima: input   end   ] */
+
+
+
+/* Old versions of Maxima abort on loading files that end in a comment. */
+"Created with wxMaxima 22.04.0"$

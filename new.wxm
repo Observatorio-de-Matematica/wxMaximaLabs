@@ -1,0 +1,57 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 22.04.0 ] */
+/* [wxMaxima: input   start ] */
+a : makelist (random(16.5), 100)$
+list : create_list([x, 1.5*x^3+3*x^2+10*x], x, a)$
+m :apply(matrix,list)$
+C1 : points(columnswap(m,1,2))$
+load(interpol)$
+R(T) := linearinterpol(list, varname=T)$
+C2: explicit(R(T), T, 0, 16.5)$
+load(draw)$
+wxdraw2d(C1, C2);
+kill(all);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+load (lsquares)$
+/*s: makelist([random(200),random(200)], 5);*/
+s:[[125,140.7],[130,155.1],[135,160.3],[140,167.2],[145,169.8]]$
+D:apply(matrix,s);
+coefs : lsquares_estimates(D, [x, y], y = A*x^2 + B*x + C, [A,B,C])$
+float(%);
+res : lsquares_residuals(D, [x, y], y = A*x^2 + B*x + C, first(coefs));
+y : A*x^2 + B*x + C, first(coefs)$
+xy : explicit(y, x, 120, 150)$
+err : errors( makelist([ D[i][1], D[i][2], res[i] ], i, 1, 5) )$
+wxdraw2d(
+    err,
+    xy
+)$
+kill(all);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+arr : makelist(random(10)+random(10)*%i, 10)$
+mod : round( 
+    float(
+        mean(
+            cabs(arr)
+        )
+    ) * 10e4) / 10e4;
+faz: round( 
+    float(
+        mean(
+            carg(arr)
+        )
+    ) * 10e4) / 10e4;
+stringout("/home/sergey/Documents/wxMaxima/out.txt", mod, faz);
+
+/* [wxMaxima: input   end   ] */
+
+
+
+/* Old versions of Maxima abort on loading files that end in a comment. */
+"Created with wxMaxima 22.04.0"$
